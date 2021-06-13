@@ -1,0 +1,12 @@
+{
+    "python.pythonPath": "/var/demokratiefabrik/venv/bin/python3",
+    "files.autoGuessEncoding": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#083600",
+        "titleBar.activeBackground": "#0B4C01",
+        "titleBar.activeForeground": "#EBFFE8"
+    },
+    "html.format.extraLiners": ""
+}
