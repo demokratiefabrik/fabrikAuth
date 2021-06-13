@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% comment %}
+https://stackoverflow.com/questions/55369645/how-to-customize-default-auth-login-form-in-django
+{% endcomment %}
+{%block title %}Anmeldung Demokratiefabrik{% endblock %} {% block content %}
+
+<br>
+<div style=" margin:1em;">
+    <form method="post" style="max-width:400px; width:80%;">{% csrf_token %}
+        <h1>Anmeldung zur Demokratiefabrik</h1>
+
+
+        {% if form.non_field_errors %}
+
+        <p style="color:red">
+            Beim Login ist ein Fehler aufgetreten. Überprüfen Sie bitte, ob alle Angaben richtig erfasst sind.
+            <br>
+        </p>
+        {% endif %}
+
+        {% if form.token.initial %}
+
+        <div class="fieldWrapper">
+            {{ form.token.errors }}
+            <p>
+                Klicken Sie auf 'Login' um sich automatisch einzuloggen.
+                <input type="hidden" name="token" maxlength="150" id="id_username" value="{{ form.token.initial }}">
+                <input type="hidden" name="username" autocapitalize="none" maxlength="150" required="" id="id_username"
+                    value="NONEMPTY">
+                <input type="hidden" name="password" value="NONEMPTY" />
+            </p>
+        </div>
+
+        {% elif form.ltoken.initial and not form.non_field_errors %}
+
+        <div class="fieldWrapper">
+            <p>
+                Klicken Sie auf 'Login' um sich automatisch einzuloggen.
+                <input type="hidden" name="ltoken" maxlength="150" id="id_username" value="{{ form.ltoken.initial }}">
+                <input type="hidden" name="username" autocapitalize="none" maxlength="150" required="" id="id_username"
+                    value="NONEMPTY">
+                <input type="hidden" name="password" value="NONEMPTY" />
+            </p>
+        </div>
+
+        {% else %}
+
+        <div class="fieldWrapper">
+
+            <p>
+                {{ form.username.errors }}
+                <label style="display: inline-block; width: 150px;" for="id_username">PIN (5 Zahlen)</label>
+
+                {% if form.username.value %}
+                <input type="text" value="{{form.username.value }}" name="username" maxlength="150" required
+                    id="id_username">
+                {% else %}
+                <input type="text" name="username" maxlength="150" required id="id_username">
+                {% endif %}
+            </p>
+            <p>
+
+                {{ form.password.errors }}
+                <label style="display: inline-block; width: 150px;" for="{{ form.password.id_for_label }}">
+                    Passwort (Grossbuchstaben):</label> {{ form.password }}
+            </p>
+            <br>
+        </div>
+        {% endif %}
+</div>
+
+
+
+<div>
+    <input type="hidden" name="next" value="{{ next }}" />
+
+    <button type="submit">Login</button>&nbsp;&nbsp;&nbsp;<a href='https://www.demokratiefabrik.ch'>Abbrechen</a>
+</div>
+</form>
+<br><br>
+<p style="max-width:400px; width:80%;">
+    Sie finden diese Angaben auf dem Einladungsbrief, den wir Ihnen zugesendet haben.
+</p>
+
+</div>
+{% endblock %}
+
+{% comment %}
+<!-- Ist der
+        Einladungsbrief nicht mehr auffindbar, dann können Sie sich via E-Mail <a
+            href="mailto:demokratiefabrik.ipw@unibe.ch">E-mail</a> bei uns melden. Dabei muss
+        zwingend die E-Mail-Adresse angeben werden, welche Sie beim ersten Besuch auf der Plattform hinterlegt haben. -->
+
+{{ form.errors }}
+
+ORIGINAL {{ form.as_p }} DUMMY USERNAMEddd
+<input type="hidden" name="username" autocapitalize="none" maxlength="150" required="" id="id_username"
+    value="NONEMPTY">
+<div class="fieldWrapper">
+    <label style="display: inline-block; min-width: 150px;" for="{{ form.token.id_for_label }}">Persönlicher PIN:
+    </label> {{ form.token }}
+    <input type="text" name="token" autofocus="" autocapitalize="none" autocomplete="token" maxlength="150" required=""
+        id="id_token" data-kpxc-id="id_token">
+    <input type="hidden" name="password" value="demokratiefabrik" />
+    {% endcomment %}

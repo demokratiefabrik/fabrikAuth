@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base href='' />
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset=utf-8>
+    <meta name="description" content="Demokratiefabrik Authentifizierung">
+    <meta name=format-detection content="telephone=no">
+    <meta name=msapplication-tap-highlight content=no>
+    <meta name=viewport content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width">
+    <link rel="icon" type="image/png" sizes="128x128" href="https://www.demokratiefabrik.ch/icons/favicon-128x128.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://www.demokratiefabrik.ch/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.demokratiefabrik.ch/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.demokratiefabrik.ch/icons/favicon-16x16.png">
+    <!-- first load django static tag. -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/auth.demokratiefabrik.min.css' %}">
+</head>
+
+<body>
+    <div id=q-app>
+        <header data-v-6da80873="" class="q-header q-layout__section--marginal text-primary shadow-1 bg-white">
+            <div data-v-6da80873="" align="center" style="min-height: 40px;">
+                <div data-v-6da80873="" role="img" class="q-img overflow-hidden"
+                    style="max-width: 241px; max-height: 120px;">
+                    <div style="padding-bottom: 100%;"></div>
+                    <div class="q-img__image absolute-full"
+                        style="background-size: cover; background-position: 50% 50%; background-image: url(&quot;{% static 'img/logoweb.png' %}&quot;);">
+                    </div>
+                    <div class="q-img__content absolute-full"></div>
+                </div>
+            </div>
+        </header>
+        <main style="margin-left:30%;">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+
+</html>

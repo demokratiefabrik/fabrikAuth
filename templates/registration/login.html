@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% comment %} https://stackoverflow.com/questions/55369645/how-to-customize-default-auth-login-form-in-django {% endcomment %}
+
+{% block title %}Authentifizierung Demokratie-Fabrik{% endblock %}
+
+{% block content %}
+
+<br>
+<div style=" margin:1em;">
+<form method="post" style="max-width:400px; width:80%;">
+<h4>Demokratie Fabrik - Anmeldung</h4>
+  {% csrf_token %}
+    
+    {% comment %} ORIGINAL {% endcomment %}
+    {% comment %} {{ form.as_p }} {% endcomment %}
+
+    <div class="fieldWrapper">
+        {{ form.token.errors }}
+        <label for="{{ form.token.id_for_label }}">Persönlicher PIN</label>
+        {% comment %} {{ form.token }} {% endcomment %}
+
+        <input type="text" name="token" autofocus="" autocapitalize="none" autocomplete="token" maxlength="150" required="" id="id_token" data-kpxc-id="id_token">
+        {% comment %} DUMMY USERNAME {% endcomment %}
+        <input type="hidden" name="username" autocapitalize="none" maxlength="150" required="" id="id_username" value="NONEMPTY">
+
+    </div>
+    {% comment %} <div class="fieldWrapper">
+        {{ form.password.errors }}
+        <label for="{{ form.password.id_for_label }}">Password:</label>
+        {{ form.password }}
+    </div> {% endcomment %}
+
+    {{ form.errors }}
+    {{ form.non_field_errors }}
+
+  <input type="hidden" name="password" value="demokratiefabrik" />
+  <input type="hidden" name="next" value="{{ next }}" />
+  <button type="submit">Login</button>
+</form>
+
+<br>
+<hr>
+<b>Usernames</b><br>
+<table>
+<tr><td>Platform-Administrator:</td><td>administrator</td></tr>
+<tr><td>E-Konvent-Manager:</td><td>manager</td></tr>
+<tr><td>Experten:</td><td>expert</td></tr>
+<tr><td>Delegierter / Zufallssample:</td><td>delegate</td></tr>
+<tr><td>Gäste mit Vorschlagsrecht:</td><td>contributor</td></tr>
+</table><br>
+
+</div>
+{% endblock %}
