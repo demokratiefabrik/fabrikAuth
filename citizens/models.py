@@ -23,7 +23,7 @@ class User(AbstractUser):
 
     import_bulk = models.CharField(
         max_length=100,
-        unique=True,
+        unique=False,
         null=True,
         blank=True)
 

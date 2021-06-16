@@ -15,7 +15,7 @@ def generate_access_token(request):
     permissions = list(
         filter(
             lambda x:
-            x.startswith('oauth2_provider.') and x.find('@')>-1,
+            x.startswith('oauth2_provider.') and x.find('@') > -1,
             request.user.get_all_permissions())
     )
 
