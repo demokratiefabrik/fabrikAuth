@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/var/demokratiefabrik/venv/bin/python3",
+    "python.pythonPath": "/var/dfabrik/fabrikAuth/venv/bin/python3",
     "files.autoGuessEncoding": true,
     "python.linting.flake8Enabled": true,
     "python.linting.enabled": true,
